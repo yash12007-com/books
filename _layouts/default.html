@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="{{ site.lang | default: 'en' }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f6f4ef">
+    <link rel="shortcut icon" href="https://www.yash12007.com/favicon/favicon.ico" type="image/x-icon">
+    {% seo %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+    <link rel="alternate" type="application/atom+xml" title="{{ site.title | escape }}" href="{{ '/feed.xml' | relative_url }}">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header">
+      <div class="shell header-inner">
+        <a class="brand" href="{{ '/' | relative_url }}" aria-label="Yash12007 Books home">
+          <img class="brand-logo" src="{{ '/assets/images/yash12007-logo.png' | relative_url }}" width="40" height="40" alt="Yash12007 logo">
+          <span><strong>Yash12007</strong><small>BOOKS &amp; IDEAS</small></span>
+        </a>
+        <nav class="main-nav" aria-label="Main navigation">
+          <a href="{{ '/' | relative_url }}#library">The library</a>
+          <a href="{{ '/about/' | relative_url }}">About</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">{{ content }}</main>
+    <footer class="site-footer">
+      <div class="shell footer-inner">
+        <a class="brand footer-brand" href="{{ '/' | relative_url }}"><img class="brand-logo" src="{{ '/assets/images/yash12007-logo.png' | relative_url }}" width="40" height="40" alt=""><span><strong>Yash12007 Books</strong><small>Stories, knowledge, and new perspectives.</small></span></a>
+        <p>Find your next good read.</p>
+      </div>
+      <div class="shell footer-bottom"><span>© {{ 'now' | date: '%Y' }} Yash12007. All Rights Reserved.</span><a href="{{ '/feed.xml' | relative_url }}">RSS feed</a></div>
+    </footer>
+  </body>
+</html>

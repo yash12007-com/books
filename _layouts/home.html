@@ -1,0 +1,82 @@
+---
+layout: default
+---
+<section class="hero">
+  <div class="shell hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="eyebrow-line"></span> THE READING ROOM</span>
+      <h1>Books for the<br><em>curious mind.</em></h1>
+      <p class="hero-lede">A collection of books published by Yash12007—made to inform, inspire, and stay with you long after the last page.</p>
+      <a class="button button-dark" href="#library">Explore the library <span aria-hidden="true">↓</span></a>
+      <div class="hero-note"><span class="note-rule"></span><span>Available on Amazon &amp; Google Play Books</span></div>
+    </div>
+    <div class="hero-art" aria-label="Illustration of a stack of books">
+      <div class="sun-disc"></div><span class="art-spark spark-one">✳</span><span class="art-spark spark-two">✳</span>
+      <div class="book-stack">
+        <div class="book book-back"><span class="book-line"></span><span class="book-title">IDEAS<br>IN MOTION</span><span class="book-mark">Y</span></div>
+        <div class="book book-middle"><span class="book-title">THE ART OF<br>BEGINNING</span><span class="book-mark">Y</span></div>
+        <div class="book book-front"><span class="book-kicker">A COLLECTION OF THOUGHTS</span><span class="book-title">A GOOD<br>QUESTION</span><span class="book-line"></span><span class="book-author">YASH12007</span></div>
+      </div>
+      <div class="art-caption"><span>01</span><span>OPEN A NEW CHAPTER</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-strip"><div class="shell trust-inner"><span>INDEPENDENTLY PUBLISHED</span><span class="trust-dot">✳</span><span>THOUGHTFULLY MADE</span><span class="trust-dot">✳</span><span>READY WHEN YOU ARE</span></div></section>
+
+<section class="library section shell" id="library">
+  <div class="section-heading">
+    <div><span class="eyebrow"><span class="eyebrow-line"></span> THE COLLECTION</span><h2>Find your next read.</h2></div>
+    <p>Browse the books and choose the format that suits you.</p>
+  </div>
+  {% assign books = site.books | sort: 'date' | reverse %}
+  {% if books.size > 0 %}
+    <div class="book-grid">
+      {% for book in books %}
+        <article class="book-card">
+          <a class="cover-link" href="{{ book.url | relative_url }}" aria-label="Read about {{ book.title | escape }}">
+            {% if book.cover %}<img class="cover-image" src="{{ book.cover | relative_url }}" alt="Cover of {{ book.title | escape }}" loading="lazy">
+            {% else %}<div class="cover-placeholder cover-{{ forloop.index | modulo: 4 }}"><span class="cover-small">YASH12007 BOOKS</span><strong>{{ book.title }}</strong><span class="cover-decoration" aria-hidden="true">✳</span><small>{{ book.author | default: 'Yash12007' }}</small></div>{% endif %}
+          </a>
+          <div class="card-meta">{% if book.category %}<span>{{ book.category }}</span>{% else %}<span>BOOK</span>{% endif %}{% if book.format %}<span>{{ book.format }}</span>{% endif %}</div>
+          <h3><a href="{{ book.url | relative_url }}">{{ book.title }}</a></h3>
+          <p>{{ book.excerpt | default: book.description | strip_html | truncate: 132 }}</p>
+          <a class="text-link" href="{{ book.url | relative_url }}">Discover the book <span aria-hidden="true">↗</span></a>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state"><div class="empty-icon" aria-hidden="true">✳</div><div><h3>The first chapter is waiting.</h3><p>New titles will appear here soon. Check back to explore the growing Yash12007 library.</p></div><span class="empty-index">01 / 01</span></div>
+  {% endif %}
+</section>
+
+<section class="platform-band">
+  <div class="shell platform-inner">
+    <div>
+      <span class="eyebrow eyebrow-light">
+        <span class="eyebrow-line"></span> 
+        YOUR BOOK, YOUR WAY
+      </span>
+      <h2>Good stories travel.</h2>
+      <p>Find Yash12007 titles in the stores you already love.</p>
+    </div>
+    <div class="platform-list">
+      <div class="platform" onclick="window.open('https://www.amazon.com/s?i=digital-text&rh=p_27%3AYash%2BBodhe&s=relevancerank&text=Yash+Bodhe', '_blank')">
+        <span class="platform-icon amazon-icon">a</span>
+        <span>
+          <strong>Amazon</strong>
+          <small>Kindle &amp; print editions</small>
+        </span>
+        <span class="platform-arrow">↗</span>
+      </div>
+      <div class="platform" onclick="window.open('https://play.google.com/store/search?q=Yash+Bodhe&c=books', '_blank')">
+        <span class="platform-icon play-icon">▶</span>
+        <span>
+          <strong>Google Play Books</strong>
+          <small>Read on any device</small>
+        </span>
+        <span class="platform-arrow">↗</span>
+      </div>
+    </div>
+  </div>
+</section>

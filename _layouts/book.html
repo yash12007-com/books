@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<article class="book-page shell">
+  <a class="back-link" href="{{ '/' | relative_url }}#library">← Back to the library</a>
+  <div class="book-detail">
+    <div class="detail-cover">
+      {% if page.cover %}<img class="cover-image" src="{{ page.cover | relative_url }}" alt="Cover of {{ page.title | escape }}">
+      {% else %}<div class="cover-placeholder cover-{{ page.cover_style | default: '1' }}"><span class="cover-small">YASH12007 BOOKS</span><strong>{{ page.title }}</strong><span class="cover-decoration" aria-hidden="true">✳</span><small>{{ page.author | default: 'Yash12007' }}</small></div>{% endif %}
+    </div>
+    <div class="detail-copy">
+      <span class="eyebrow"><span class="eyebrow-line"></span> {{ page.category | default: 'A YASH12007 BOOK' }}</span>
+      <h1>{{ page.title }}</h1>
+      {% if page.subtitle %}<p class="detail-subtitle">{{ page.subtitle }}</p>{% endif %}
+      <p class="detail-author">By <strong>{{ page.author | default: 'Yash12007' }}</strong>{% if page.publisher %}<span> · Published by {{ page.publisher }}</span>{% endif %}{% if page.published %}<span> · Published {{ page.published | date: '%B %-d, %Y' }}</span>{% endif %}</p>
+      <div class="detail-description">{{ content }}</div>
+      {% if page.amazon_url or page.google_play_url %}<div class="store-buttons">{% if page.amazon_url %}<a class="button button-dark" href="{{ page.amazon_url }}" target="_blank" rel="noopener noreferrer">Get it on Amazon <span aria-hidden="true">↗</span></a>{% endif %}{% if page.google_play_url %}<a class="button button-outline" href="{{ page.google_play_url }}" target="_blank" rel="noopener noreferrer">Google Play Books <span aria-hidden="true">↗</span></a>{% endif %}</div>{% endif %}
+      {% if page.isbn %}<p class="book-isbn">ISBN <span>{{ page.isbn }}</span></p>{% endif %}
+    </div>
+  </div>
+</article>

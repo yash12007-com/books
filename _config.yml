@@ -1,0 +1,40 @@
+title: Yash12007 Books
+description: Books published by Yash12007 on Amazon KDP and Google Play Books.
+url: "https://books.yash12007.com"
+baseurl: ""
+lang: en
+timezone: Asia/Kolkata
+markdown: kramdown
+permalink: /:categories/:title/
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+feed:
+  collections:
+    books:
+      path: "/books-feed.xml"
+
+collections:
+  books:
+    output: true
+    permalink: /books/:name/
+    feed: true
+
+defaults:
+  - scope:
+      path: ""
+      type: books
+    values:
+      layout: book
+  - scope:
+      path: ""
+    values:
+      image: /assets/images/og-default.svg
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle

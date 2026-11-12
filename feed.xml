@@ -1,0 +1,27 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="{{ site.lang | default: 'en' }}">
+  <title>{{ site.title | xml_escape }}</title>
+  <subtitle>{{ site.description | xml_escape }}</subtitle>
+  <link href="{{ '/feed.xml' | absolute_url }}" rel="self" type="application/atom+xml" />
+  <link href="{{ '/' | absolute_url }}" rel="alternate" type="text/html" />
+  <id>{{ '/' | absolute_url }}</id>
+  {% assign all_entries = site.posts | concat: site.books | sort: 'date' | reverse %}
+  {% assign newest_entry = all_entries | first %}
+  {% if newest_entry %}<updated>{{ newest_entry.date | default: newest_entry.published | default: site.time | date_to_xmlschema }}</updated>{% else %}<updated>{{ site.time | date_to_xmlschema }}</updated>{% endif %}
+  {% for entry in all_entries %}
+  <entry>
+    <title>{{ entry.title | xml_escape }}{% if entry.subtitle %}: {{ entry.subtitle | xml_escape }}{% endif %}</title>
+    <link href="{{ entry.url | absolute_url }}" rel="alternate" type="text/html" />
+    <id>{{ entry.url | absolute_url }}</id>
+    <published>{{ entry.date | default: entry.published | default: site.time | date_to_xmlschema }}</published>
+    <updated>{{ entry.date | default: entry.published | default: site.time | date_to_xmlschema }}</updated>
+    <author><name>{{ entry.author | default: site.title | xml_escape }}</name></author>
+    {% if entry.description %}<summary type="html">{{ entry.description | xml_escape }}</summary>{% endif %}
+    <content type="html">{{ entry.content | strip_html | normalize_whitespace | xml_escape }}</content>
+    {% if entry.category %}<category term="{{ entry.category | xml_escape }}" />{% endif %}
+  </entry>
+  {% endfor %}
+</feed>
